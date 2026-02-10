@@ -51,7 +51,6 @@ export function LoginPage({ onLogin, onSwitchToSignUp, onForgotPassword }: Login
       setIsLoading(false);
       return;
     }
-
     // Simulate network delay
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));

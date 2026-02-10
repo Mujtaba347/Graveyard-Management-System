@@ -34,7 +34,7 @@ export function SearchGravePage({ onBack, mode = "search" }: FamilyPortalProps) 
     ? "View grave information related to your deceased relatives."
     : "Search grave information using grave number or deceased name.";
 
-  // Mock data - in real app this would come from database
+
   const graveRecords: GraveRecord[] = [
     {
       id: "1",

@@ -41,7 +41,7 @@ export function BookGravePlot({ onBack }: BookGravePlotProps) {
       return;
     }
 
-    // Simulate booking
+
     toast.success("Booking confirmation: Grave status updated to booked.");
 
     // Reset form

@@ -37,15 +37,15 @@ export function GenerateReport({ onBack }: GenerateReportProps) {
       return;
     }
 
-    // Simulate report generation
+
     toast.success(`Generating ${reportType} report in ${format.toUpperCase()} format...`);
-    
+
     setTimeout(() => {
       toast.success("Report generated successfully! Download starting...");
     }, 2000);
   };
 
-  // Mock data for preview
+
   const mockData = {
     occupancy: [
       { section: "Section A", total: 100, occupied: 45, available: 50, reserved: 5 },
@@ -178,8 +178,8 @@ export function GenerateReport({ onBack }: GenerateReportProps) {
                   </Select>
                 </div>
 
-                <Button 
-                  onClick={handleGenerateReport} 
+                <Button
+                  onClick={handleGenerateReport}
                   className="w-full bg-emerald-700 hover:bg-emerald-800 text-white"
                 >
                   <Download className="w-4 h-4 mr-2" />
@@ -249,11 +249,10 @@ export function GenerateReport({ onBack }: GenerateReportProps) {
                               <td className="px-4 py-2 text-slate-700">{booking.plot}</td>
                               <td className="px-4 py-2 text-slate-700">{booking.name}</td>
                               <td className="px-4 py-2">
-                                <span className={`px-2 py-1 rounded text-xs ${
-                                  booking.status === "Completed" 
-                                    ? "bg-emerald-100 text-emerald-700" 
+                                <span className={`px-2 py-1 rounded text-xs ${booking.status === "Completed"
+                                    ? "bg-emerald-100 text-emerald-700"
                                     : "bg-amber-100 text-amber-700"
-                                }`}>
+                                  }`}>
                                   {booking.status}
                                 </span>
                               </td>

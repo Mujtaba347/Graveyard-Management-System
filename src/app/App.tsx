@@ -25,9 +25,10 @@ export default function App() {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [currentPage, setCurrentPage] = useState<Page>("dashboard");
 
+
+
   const handleLogin = (email: string, password: string) => {
-    // For demo purposes, accept any credentials
-    // In a real app, this would validate against a backend
+
     setUserEmail(email);
     setIsAuthenticated(true);
     setCurrentPage("dashboard");
@@ -49,8 +50,7 @@ export default function App() {
     cnic: string,
     city: string,
   ) => {
-    // For demo purposes, accept any credentials
-    // In a real app, this would create a new user in the backend
+
     console.log("Creating user:", { name, email, phone, cnic, city }); // Log the new details
 
     // Redirect to login page instead of auto-login

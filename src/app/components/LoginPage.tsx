@@ -51,12 +51,42 @@ export function LoginPage({ onLogin, onSwitchToSignUp, onForgotPassword }: Login
       setIsLoading(false);
       return;
     }
-    // Simulate network delay
+    // Verify password at least exists (length check moved to validation above)
+    if (password.length < 1) {
+      setError("Please enter your password");
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      onLogin(email, password);
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Store auth data
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify({
+          id: data.id,
+          name: data.name,
+          email: data.email
+        }));
+
+        // Notify parent to update app state
+        onLogin(email, password);
+      } else {
+        setError(data.message || "Invalid credentials");
+        setIsLoading(false);
+      }
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      console.error("Login error:", err);
+      setError("Unable to connect to server. Please try again.");
       setIsLoading(false);
     }
   };
